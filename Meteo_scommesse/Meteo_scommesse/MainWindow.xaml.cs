@@ -23,6 +23,7 @@ namespace Meteo_scommesse
         public MainWindow()
         {
             InitializeComponent();
+            listBox_citta.Items.Add()
         }
     }
 }

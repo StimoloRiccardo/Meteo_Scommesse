@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Meteo_scommesse"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="320">
     <Grid>
-        
+        <ListBox x:Name="listBox_citta" HorizontalAlignment="Center" Height="333" Margin="0,91,0,0" VerticalAlignment="Top" Width="320" d:ItemsSource="{d:SampleData ItemCount=5}"/>
+        <Label Content="METEO" HorizontalAlignment="Left" Height="60" Margin="10,10,0,0" VerticalAlignment="Top" Width="216" FontSize="45"/>
     </Grid>
 </Window>
