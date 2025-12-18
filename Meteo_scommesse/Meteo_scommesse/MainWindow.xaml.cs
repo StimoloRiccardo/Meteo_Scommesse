@@ -23,7 +23,19 @@ namespace Meteo_scommesse
         public MainWindow()
         {
             InitializeComponent();
-            listBox_citta.Items.Add()
+            label_meteo.FontFamily = new FontFamily("Century Schoolbook");
+        }
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            AggiungiCitta finestraCitta = new AggiungiCitta();
+            finestraCitta.ShowDialog();
+            listBox_citta.Items.Add(new Citta(finestraCitta.getNomeCitta()));
+        }
+
+        private void listBox_citta_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            FinestraCitta citta = new FinestraCitta();
+            citta.ShowDialog();
         }
     }
 }
