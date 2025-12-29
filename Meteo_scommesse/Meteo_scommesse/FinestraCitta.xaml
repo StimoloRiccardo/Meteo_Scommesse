@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Meteo_scommesse"
         mc:Ignorable="d"
-        Title="FinestraCitta" Height="450" Width="320">
+        Title="FinestraCitta" Height="767" Width="320">
     <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -13,7 +13,8 @@
                 <GradientStop Color="White" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <Label x:Name="label_nomeCitta" Content="" HorizontalAlignment="Left" Height="39" Margin="45,31,0,0" VerticalAlignment="Top" Width="219"/>
+        <Label x:Name="label_nomeCitta" HorizontalAlignment="Left" Height="39" Margin="45,31,0,0" VerticalAlignment="Top" Width="219" FontSize="16" FontWeight="Bold"/>
+        <Label x:Name="label_temperatura" Content="" HorizontalAlignment="Center" Height="65" Margin="0,94,0,0" VerticalAlignment="Top" Width="92" FontWeight="Bold" FontSize="16"/>
 
     </Grid>
 </Window>

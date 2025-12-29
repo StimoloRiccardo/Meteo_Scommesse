@@ -19,9 +19,13 @@ namespace Meteo_scommesse
     /// </summary>
     public partial class FinestraCitta : Window
     {
-        public FinestraCitta()
+        private Citta cittaSelezionata = new Citta("Prova");
+        public FinestraCitta(Citta citta)
         {
             InitializeComponent();
+            cittaSelezionata = citta;
+            label_nomeCitta.Content = citta.getNome();
+            label_temperatura.Content = citta.getTemperatura();
         }
     }
 }

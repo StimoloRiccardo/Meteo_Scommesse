@@ -34,7 +34,7 @@ namespace Meteo_scommesse
 
         private void listBox_citta_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            FinestraCitta citta = new FinestraCitta();
+            FinestraCitta citta = new FinestraCitta((Citta)listBox_citta.SelectedItem);
             citta.ShowDialog();
         }
     }
