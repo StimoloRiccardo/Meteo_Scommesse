@@ -22,7 +22,12 @@
         <Image x:Name="immagine_meteo" HorizontalAlignment="Left" Height="94" Margin="90,88,0,0" VerticalAlignment="Top" Width="128" Grid.ColumnSpan="2"/>
         <Label x:Name="label_umidita" Content="umidità:" HorizontalAlignment="Left" Height="33" Margin="19,310,0,0" VerticalAlignment="Top" Width="114" FontSize="14" FontWeight="Bold"/>
         <Label x:Name="label_vento" Content="vento:" HorizontalAlignment="Left" Height="33" Margin="19,343,0,0" VerticalAlignment="Top" Width="114" FontSize="14" FontWeight="Bold"/>
-        <Label x:Name="label_umidita_Copia" Content="Parametri" HorizontalAlignment="Left" Height="31" Margin="19,273,0,0" VerticalAlignment="Top" Width="98" FontWeight="Bold" FontSize="16"/>
+        <Label x:Name="label_umidita_Copia" Content="Parametri:" HorizontalAlignment="Left" Height="31" Margin="19,273,0,0" VerticalAlignment="Top" Width="98" FontWeight="Bold" FontSize="16"/>
+        <Label x:Name="label_tempMax" Content="temp max: " HorizontalAlignment="Left" Height="33" Margin="19,376,0,0" VerticalAlignment="Top" Width="114" FontSize="14" FontWeight="Bold"/>
+        <Label x:Name="label_tempMin" Content="temp min:" HorizontalAlignment="Left" Height="33" Margin="19,409,0,0" VerticalAlignment="Top" Width="114" FontSize="14" FontWeight="Bold"/>
+        <Label x:Name="label_precipitazioni" Content="precipitazioni: " HorizontalAlignment="Left" Height="33" Margin="19,442,0,0" VerticalAlignment="Top" Width="155" FontSize="14" FontWeight="Bold"/>
+        <Label x:Name="label_latitudine" Content="latitudine:" HorizontalAlignment="Left" Height="33" Margin="0,310,0,0" VerticalAlignment="Top" Width="114" FontSize="14" FontWeight="Bold" Grid.Column="1"/>
+        <Label x:Name="label_longitudine" Content="lonitudine:" HorizontalAlignment="Left" Height="33" Margin="0,343,0,0" VerticalAlignment="Top" Width="131" FontSize="14" FontWeight="Bold" Grid.Column="1"/>
 
     </Grid>
 </Window>

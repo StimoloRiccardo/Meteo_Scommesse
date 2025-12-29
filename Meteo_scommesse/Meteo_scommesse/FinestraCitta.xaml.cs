@@ -28,6 +28,11 @@ namespace Meteo_scommesse
             label_temperatura.Content = citta.getTemperatura();
             label_umidita.Content += citta.getUmidita();
             label_vento.Content += citta.getVelocitaVento();
+            label_tempMax.Content += citta.getTempMax();
+            label_tempMin.Content += citta.getTempMin();
+            label_precipitazioni.Content += citta.getPrecipitazioni();
+            label_latitudine.Content += citta.getLatitudine().ToString();
+            label_longitudine.Content += citta.getLongitudine().ToString();
 
             String pathDellEseguibile = AppDomain.CurrentDomain.BaseDirectory;
             String path = System.IO.Path.Combine(pathDellEseguibile, citta.getImmagine());

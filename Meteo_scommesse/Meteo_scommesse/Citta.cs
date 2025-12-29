@@ -18,7 +18,7 @@ namespace Meteo_scommesse
     public class Citta
     {
         private string nome, immagine;
-        private double temperatura, velocitaVento, umidita;
+        private double temperatura, velocitaVento, umidita, tempMax, tempMin, precipitazioni, lon, lat;
         private string meteo;
 
         private readonly DispatcherTimer _timer;
@@ -80,6 +80,31 @@ namespace Meteo_scommesse
         public string getImmagine()
         {
             return immagine;
+        }
+
+        public string getTempMax()
+        {
+            return tempMax + "°";
+        }
+
+        public string getTempMin()
+        {
+            return tempMin + "°";
+        }
+
+        public string getPrecipitazioni()
+        {
+            return precipitazioni + "mm";
+        }
+
+        public double getLongitudine()
+        {
+            return lon;
+        }
+
+        public double getLatitudine()
+        {
+            return lat;
         }
 
         public override string ToString()
@@ -147,6 +172,18 @@ namespace Meteo_scommesse
                 umidita = weather.main.humidity;
                 velocitaVento = weather.wind.speed;
                 meteo = weather.weather[0].main;
+                tempMax = weather.main.temp_max;
+                tempMin = weather.main.temp_min;
+                if (meteo== "Drizzle" || meteo == "Rain" || meteo == "Thunderstorm" )
+                {
+                    precipitazioni = weather.rain.OneHour;
+                }
+                else if (meteo == "Snow")
+                {
+                    precipitazioni = weather.snow.OneHour;
+                }
+                lat = weather.coord.lat;
+                lon = weather.coord.lon;
 
                 impostaImmagine();
                 MeteoAggiornato?.Invoke();
