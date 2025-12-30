@@ -21,6 +21,8 @@ namespace Meteo_scommesse
         private string meteo;
 
         private readonly DispatcherTimer _timer;
+        public event Action MeteoAggiornato;
+
 
         public Citta(string nome)
         {

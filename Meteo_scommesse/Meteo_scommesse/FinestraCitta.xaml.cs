@@ -19,7 +19,7 @@ namespace Meteo_scommesse
     /// </summary>
     public partial class FinestraCitta : Window
     {
-        private Citta cittaSelezionata = new Citta("Prova");
+        private Citta cittaSelezionata = new Citta("");
         public FinestraCitta(Citta citta)
         {
             InitializeComponent();

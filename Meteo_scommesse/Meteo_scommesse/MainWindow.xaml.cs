@@ -33,14 +33,26 @@ namespace Meteo_scommesse
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             AggiungiCitta finestraCitta = new AggiungiCitta();
-            finestraCitta.ShowDialog();
-            listBox_citta.Items.Add(new Citta(finestraCitta.getNomeCitta()));
+
+            if (finestraCitta.ShowDialog() == true)
+            {
+                Citta nuovaCitta = new Citta(finestraCitta.getNomeCitta());
+                listBox_citta.Items.Add(nuovaCitta);
+            }
         }
+
+
 
         private void listBox_citta_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             FinestraCitta citta = new FinestraCitta((Citta)listBox_citta.SelectedItem);
             citta.ShowDialog();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e) // aggiorna
+        {
+            // forza aggiornamento grafico
+            listBox_citta.Items.Refresh();
         }
     }
 }
