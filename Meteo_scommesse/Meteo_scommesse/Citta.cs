@@ -1,32 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Security.Principal;
 using System.Text;
+using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
+using static Meteo_scommesse.WeatherModels;
+using System.Windows;
+using System.Timers;
+using System.Windows.Threading;
 
 namespace Meteo_scommesse
-{
-    enum Meteo
-    {
-        Soleggiato, SoleConNuvole, Nuvoloso, Pioggia, Temporale, Neve
-    }
-    
+{   
     public class Citta
     {
         private string nome, immagine;
-        private float temperatura, velocitaVento, umidita;
-        private Meteo meteo;
+        private double temperatura, velocitaVento, umidita;
+        private string meteo;
+
+        private readonly DispatcherTimer _timer;
 
         public Citta(string nome)
         {
             this.nome = nome;
-            this.immagine = "";
-            this.meteo = Meteo.Soleggiato;
-            this.velocitaVento = 0;
-            this.temperatura = 0;
-            this.umidita = 0;
+            LoadWeather();
+            _timer = new DispatcherTimer
+            {
+                Interval = TimeSpan.FromMinutes(1)
+            };
+            _timer.Tick += (s, e) => LoadWeather();
+            _timer.Start();
         }
 
         public void setTemperatura(float temperatura)
@@ -59,12 +64,12 @@ namespace Meteo_scommesse
             return temperatura + "°";
         }
 
-        public float getUmidita()
+        public double getUmidita()
         {
             return umidita;
         }
 
-        public float getVelocitaVento()
+        public double getVelocitaVento()
         {
             return velocitaVento;
         }
@@ -72,6 +77,29 @@ namespace Meteo_scommesse
         public override string ToString()
         {
             return " " + nome + "    " + meteo + "    " + temperatura + "°";
+        }
+
+        private async void LoadWeather()
+        {
+            try
+            {
+                string ApiKey = "7f76e18c6271aff9c2dce1751d2c2b12";
+                HttpClient client = new HttpClient();
+                string url = $"https://api.openweathermap.org/data/2.5/weather?q={nome}&appid={ApiKey}&units=metric&lang=it";
+
+                var json = await client.GetStringAsync(url);
+                var weather = JsonSerializer.Deserialize<WeatherResponse>(json);
+
+                nome = weather.name;
+                temperatura = weather.main.temp;
+                umidita = weather.main.humidity;
+                velocitaVento = weather.wind.speed;
+                meteo = weather.weather[0].description;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Errore nel recupero dati meteo\n" + ex.Message);
+            }
         }
     }
 }
