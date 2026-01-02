@@ -39,6 +39,7 @@ namespace Meteo_scommesse
                 Citta nuovaCitta = new Citta(finestraCitta.getNomeCitta());
                 listBox_citta.Items.Add(nuovaCitta);
             }
+            
         }
 
 

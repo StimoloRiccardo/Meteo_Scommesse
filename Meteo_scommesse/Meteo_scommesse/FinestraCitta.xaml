@@ -13,8 +13,9 @@
                 <GradientStop Color="White" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <Label x:Name="label_nomeCitta" HorizontalAlignment="Left" Height="39" Margin="45,31,0,0" VerticalAlignment="Top" Width="219" FontSize="16" FontWeight="Bold"/>
-        <Label x:Name="label_temperatura" Content="" HorizontalAlignment="Center" Height="65" Margin="0,94,0,0" VerticalAlignment="Top" Width="92" FontWeight="Bold" FontSize="16"/>
+        <Label x:Name="label_nomeCitta" HorizontalAlignment="Left" Height="39" Margin="45,31,0,0" VerticalAlignment="Top" Width="219" FontSize="16" FontWeight="Bold" Content="prova"/>
+        <Label x:Name="label_temperatura" Content="3" HorizontalAlignment="Center" Height="65" Margin="0,203,0,0" VerticalAlignment="Top" Width="92" FontWeight="Bold" FontSize="16"/>
+        <Image x:Name="immagine_meteo" HorizontalAlignment="Left" Height="94" Margin="90,88,0,0" VerticalAlignment="Top" Width="128"/>
 
     </Grid>
 </Window>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Meteo_scommesse"
         mc:Ignorable="d"
-        Title="MainWindow" Height="590" Width="323">
+        Title="MainWindow" Height="590" Width="368">
     <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -13,9 +13,9 @@
                 <GradientStop Color="White" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <ListBox x:Name="listBox_citta" HorizontalAlignment="Center" Height="316" Margin="0,91,0,0" VerticalAlignment="Top" Width="320" d:ItemsSource="{d:SampleData ItemCount=5}" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="18" SelectionChanged="listBox_citta_SelectionChanged"/>
+        <ListBox x:Name="listBox_citta" HorizontalAlignment="Center" Height="316" Margin="0,91,0,0" VerticalAlignment="Top" Width="368" d:ItemsSource="{d:SampleData ItemCount=5}" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="18" SelectionChanged="listBox_citta_SelectionChanged"/>
         <Label x:Name="label_meteo" Content="METEO" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="216" FontSize="45" Foreground="#FF2853FF"/>
-        <Button x:Name="button_aggiungi" Content="+" HorizontalAlignment="Left" Height="60" Margin="242,0,0,0" VerticalAlignment="Top" Width="68" FontSize="25" Background="{x:Null}" BorderBrush="{x:Null}" Click="Button_Click" Foreground="#FF2853FF"/>
+        <Button x:Name="button_aggiungi" Content="+" HorizontalAlignment="Left" Height="60" Margin="290,10,0,0" VerticalAlignment="Top" Width="68" FontSize="25" Background="{x:Null}" BorderBrush="{x:Null}" Click="Button_Click" Foreground="#FF2853FF"/>
         <Button Content="Aggiorna" HorizontalAlignment="Center" Height="36" Margin="19,466,0,0" VerticalAlignment="Center" Width="102" Click="Button_Click_1" Background="#FF059CC6" Foreground="White" FontWeight="Bold" FontSize="14" FontFamily="Yu Gothic UI" BorderBrush="White" BorderThickness="0,0,0,0"/>
     </Grid>
 </Window>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -25,6 +26,9 @@ namespace Meteo_scommesse
             Citta cittaSelezionata = citta;
             label_nomeCitta.Content = citta.getNome();
             label_temperatura.Content = citta.getTemperatura();
+            String pathDellEseguibile = AppDomain.CurrentDomain.BaseDirectory;
+            String path = System.IO.Path.Combine(pathDellEseguibile, citta.getImmagine());
+            immagine_meteo.Source = new BitmapImage(new Uri(path, UriKind.Absolute));
         }
     }
 }
