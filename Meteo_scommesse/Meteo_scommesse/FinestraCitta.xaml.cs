@@ -18,12 +18,11 @@ namespace Meteo_scommesse
     /// Logica di interazione per FinestraCitta.xaml
     /// </summary>
     public partial class FinestraCitta : Window
-    {
-        private Citta cittaSelezionata = new Citta("");
+    {  
         public FinestraCitta(Citta citta)
         {
             InitializeComponent();
-            cittaSelezionata = citta;
+            Citta cittaSelezionata = citta;
             label_nomeCitta.Content = citta.getNome();
             label_temperatura.Content = citta.getTemperatura();
         }
