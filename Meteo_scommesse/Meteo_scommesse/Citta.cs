@@ -35,7 +35,6 @@ namespace Meteo_scommesse
             };
             _timer.Tick += (s, e) => LoadWeather();
             _timer.Start();
-            immagine = "images/1.png";
         }
 
         public void setTemperatura(float temperatura)
@@ -90,53 +89,73 @@ namespace Meteo_scommesse
 
         public void impostaImmagine()
         {
-            if (meteo == "soleggiato")
+            switch (meteo)
             {
-                immagine = "images/1.png";
-            }
-            else if (meteo == "poco nuvoloso")
-            {
-                immagine = "images/2.png";
-            }
-            else if (meteo == "nuvoloso")
-            {
-                immagine = "images/3.png";
-            }
-            else if (meteo == "pioggia leggera" || meteo == "pioggia moderata")
-            {
-                immagine = "images/4.png";
-            }
-            else if (meteo == "pioggia intensa" || meteo == "temporale")
-            {
-                immagine = "images/5.png";
-            }
-            else if (meteo == "neve leggera" || meteo == "neve moderata" || meteo == "neve intensa")
-            {
-                immagine = "images/6.png";
+                case "Clear":
+                    immagine = "images/1.jpg";
+                    break;
+
+                case "Clouds":
+                    immagine = "images/2.jpg";
+                    break;
+
+                case "Drizzle":
+                    immagine = "images/3.jpg";
+                    break;
+
+                case "Rain":
+                    immagine = "images/3.jpg";
+                    break;
+
+                case "Thunderstorm":
+                    immagine = "images/5.jpg";
+                    break;
+
+                case "Snow":
+                    immagine = "images/6.jpg";
+                    break;
+
+                case "Mist":
+                    immagine = "images/7.jpg";
+                    break;
+
+                case "Extreme":
+                    immagine = "images/8.jpg";
+                    break;
+
+                default:
+                    immagine = "images/1.jpg";
+                    break;
             }
         }
 
-                private async void LoadWeather()
-                {
-                    try
-                    {
-                        string ApiKey = "7f76e18c6271aff9c2dce1751d2c2b12";
-                        HttpClient client = new HttpClient();
-                        string url = $"https://api.openweathermap.org/data/2.5/weather?q={nome}&appid={ApiKey}&units=metric&lang=it";
 
-                        var json = await client.GetStringAsync(url);
-                        var weather = JsonSerializer.Deserialize<WeatherResponse>(json);
 
-                        nome = weather.name;
-                        temperatura = weather.main.temp;
-                        umidita = weather.main.humidity;
-                        velocitaVento = weather.wind.speed;
-                        meteo = weather.weather[0].description;
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Errore nel recupero dati meteo\n" + ex.Message);
-                    }
-                }
+        private async void LoadWeather()
+        {
+            try
+            {
+                string ApiKey = "7f76e18c6271aff9c2dce1751d2c2b12";
+                HttpClient client = new HttpClient();
+                string url = $"https://api.openweathermap.org/data/2.5/weather?q={nome}&appid={ApiKey}&units=metric&lang=it";
+
+                var json = await client.GetStringAsync(url);
+                var weather = JsonSerializer.Deserialize<WeatherResponse>(json);
+
+                nome = weather.name;
+                temperatura = weather.main.temp;
+                umidita = weather.main.humidity;
+                velocitaVento = weather.wind.speed;
+                meteo = weather.weather[0].main;
+
+                impostaImmagine();
+                MeteoAggiornato?.Invoke();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Errore nel recupero dati meteo\n" + ex.Message);
+            }
+        }
+
     }
 }

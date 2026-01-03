@@ -25,7 +25,7 @@ namespace Meteo_scommesse
 
         public class Weather
         {
-            public string description { get; set; }
+            public string main { get; set; }
         }
 
         public class Wind
