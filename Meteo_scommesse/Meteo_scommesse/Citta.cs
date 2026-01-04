@@ -67,14 +67,14 @@ namespace Meteo_scommesse
             return temperatura + "°";
         }
 
-        public double getUmidita()
+        public string getUmidita()
         {
-            return umidita;
+            return umidita + "%";
         }
 
-        public double getVelocitaVento()
+        public string getVelocitaVento()
         {
-            return velocitaVento;
+            return velocitaVento + "km/h";
         }
 
         public string getImmagine()
