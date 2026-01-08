@@ -174,29 +174,33 @@ namespace Meteo_scommesse
             {
                 string ApiKey = "7f76e18c6271aff9c2dce1751d2c2b12";
                 HttpClient client = new HttpClient();
-                string url = $"https://api.openweathermap.org/data/2.5/weather?q={nome}&appid={ApiKey}&units=metric&lang=it";
+                string url = $"https://api.openweathermap.org/data/2.5/forecast?q={nome}&units=metric&appid={ApiKey}\r\n";
 
                 var json = await client.GetStringAsync(url);
-                var weather = JsonSerializer.Deserialize<WeatherResponse>(json);
+                var forecast = JsonSerializer.Deserialize<ForecastResponse>(json);
 
-                nome = weather.name;
-                temperatura = weather.main.temp;
-                umidita = weather.main.humidity;
-                velocitaVento = weather.wind.speed;
-                meteo = weather.weather[0].main;
-                tempMax = weather.main.temp_max;
-                tempMin = weather.main.temp_min;
+                var primo = forecast.list[0];
+                lat = forecast.city.coord.lat;
+                lon = forecast.city.coord.lon;
+                nome = forecast.city.name;
+                temperatura = primo.main.temp;
+                umidita = primo.main.humidity;
+                velocitaVento = primo.wind.speed;
+                meteo = primo.weather[0].main;
+                tempMax = primo.main.temp_max;
+                tempMin = primo.main.temp_min;
+                tempPercepita = primo.main.feels_like;
+
                 if (meteo== "Drizzle" || meteo == "Rain" || meteo == "Thunderstorm" )
                 {
-                    precipitazioni = weather.rain.OneHour;
+                    precipitazioni = primo.rain.OneHour;
                 }
                 else if (meteo == "Snow")
                 {
-                    precipitazioni = weather.snow.OneHour;
+                    precipitazioni = primo.snow.OneHour;
                 }
-                lat = weather.coord.lat;
-                lon = weather.coord.lon;
-                tempPercepita = weather.main.feels_like;
+                
+                tempPercepita = primo.main.feels_like;
 
                 impostaImmagine();
                 MeteoAggiornato?.Invoke();

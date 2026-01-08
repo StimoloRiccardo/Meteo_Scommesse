@@ -10,16 +10,33 @@ namespace Meteo_scommesse
 {
     internal class WeatherModels
     {
-        public class WeatherResponse
+        public class ForecastResponse
+        {
+            public List<ForecastItem> list { get; set; }
+            public City city { get; set; }
+        }
+
+        public class GeoResponse
+        {
+            public string name { get; set; }
+            public string country { get; set; }
+        }
+        public class ForecastItem
         {
             public Main main { get; set; }
             public Weather[] weather { get; set; }
             public Wind wind { get; set; }
-            public string name { get; set; }
             public Rain rain { get; set; }
             public Snow snow { get; set; }
+            public string dt_txt { get; set; }
+        }
+
+        public class City
+        {
+            public string name { get; set; }
             public Coord coord { get; set; }
         }
+
 
 
         public class Main
