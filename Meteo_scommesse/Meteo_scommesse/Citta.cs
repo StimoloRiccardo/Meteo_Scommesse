@@ -18,8 +18,9 @@ namespace Meteo_scommesse
     public class Citta
     {
         private string nome, immagine;
-        private double temperatura, velocitaVento, umidita, tempMax, tempMin, precipitazioni, lon, lat;
+        private double temperatura, velocitaVento, umidita, tempMax, tempMin, precipitazioni, lon, lat, tempPercepita;
         private string meteo;
+        private DateTime giornoCorrente;
 
         private readonly DispatcherTimer _timer;
         public event Action MeteoAggiornato;
@@ -28,6 +29,7 @@ namespace Meteo_scommesse
         public Citta(string nome)
         {
             this.nome = nome;
+            this.giornoCorrente = DateTime.Now;
             LoadWeather();
             _timer = new DispatcherTimer
             {
@@ -105,6 +107,16 @@ namespace Meteo_scommesse
         public double getLatitudine()
         {
             return lat;
+        }
+        
+        public string getTempPercepita()
+        {
+            return tempPercepita + "°";
+        }
+
+        public DateTime getGiornoCorrente()
+        {
+            return giornoCorrente;
         }
 
         public override string ToString()
@@ -184,6 +196,7 @@ namespace Meteo_scommesse
                 }
                 lat = weather.coord.lat;
                 lon = weather.coord.lon;
+                tempPercepita = weather.main.feels_like;
 
                 impostaImmagine();
                 MeteoAggiornato?.Invoke();

@@ -33,6 +33,8 @@ namespace Meteo_scommesse
             label_precipitazioni.Content += citta.getPrecipitazioni();
             label_latitudine.Content += citta.getLatitudine().ToString();
             label_longitudine.Content += citta.getLongitudine().ToString();
+            label_tempPercepita.Content += citta.getTempPercepita();
+            label_data.Content = citta.getGiornoCorrente().ToShortDateString();
 
             String pathDellEseguibile = AppDomain.CurrentDomain.BaseDirectory;
             String path = System.IO.Path.Combine(pathDellEseguibile, citta.getImmagine());

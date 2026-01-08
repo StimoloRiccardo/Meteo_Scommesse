@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Text.Json.Serialization;
+using System.Windows.Media.Animation;
 
 namespace Meteo_scommesse
 {
@@ -26,6 +27,7 @@ namespace Meteo_scommesse
             public double temp { get; set; }
             public double temp_min { get; set; }
             public double temp_max { get; set; }
+            public double feels_like { get; set; }
             public double humidity { get; set; }
             
 
