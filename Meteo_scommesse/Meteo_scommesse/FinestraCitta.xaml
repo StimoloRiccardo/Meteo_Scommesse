@@ -30,8 +30,8 @@
         <Label x:Name="label_longitudine" Content="lonitudine:" HorizontalAlignment="Left" Height="33" Margin="0,343,0,0" VerticalAlignment="Top" Width="131" FontSize="14" FontWeight="Bold" Grid.Column="1"/>
         <Label x:Name="label_tempPercepita" Content="temp percepita:" HorizontalAlignment="Left" Height="33" Margin="19,310,0,0" VerticalAlignment="Top" Width="155" FontSize="14" FontWeight="Bold"/>
         <Label x:Name="label_data" Content="data" Grid.ColumnSpan="2" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="38" Margin="87,64,0,0" VerticalAlignment="Top" Width="146" FontSize="16" FontWeight="Bold"/>
-        <Button x:Name="button_avanti" Grid.Column="1" Content="&gt;" HorizontalAlignment="Left" Height="38" Margin="57,64,0,0" VerticalAlignment="Top" Width="38" Background="{x:Null}" BorderBrush="{x:Null}"/>
-        <Button x:Name="button_indietro" Content="&lt;" HorizontalAlignment="Left" Height="38" Margin="43,64,0,0" VerticalAlignment="Top" Width="37" Background="{x:Null}" BorderBrush="{x:Null}"/>
+        <Button x:Name="button_avanti" Grid.Column="1" Content="&gt;" HorizontalAlignment="Left" Height="38" Margin="57,64,0,0" VerticalAlignment="Top" Width="38" Background="{x:Null}" BorderBrush="{x:Null}" Click="button_avanti_Click"/>
+        <Button x:Name="button_indietro" Content="&lt;" HorizontalAlignment="Left" Height="38" Margin="43,64,0,0" VerticalAlignment="Top" Width="37" Background="{x:Null}" BorderBrush="{x:Null}" Click="button_indietro_Click"/>
 
     </Grid>
 </Window>

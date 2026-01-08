@@ -119,6 +119,11 @@ namespace Meteo_scommesse
             return giornoCorrente;
         }
 
+        public void setGiornoCorrente(DateTime nuovaData)
+        {
+            giornoCorrente = nuovaData;
+        }
+
         public override string ToString()
         {
             return " " + nome + "    " + meteo + "    " + temperatura + "°";
@@ -129,46 +134,46 @@ namespace Meteo_scommesse
             switch (meteo)
             {
                 case "Clear":
-                    immagine = "images/1.jpg";
+                    immagine = "images/1.png";
                     break;
 
                 case "Clouds":
-                    immagine = "images/2.jpg";
+                    immagine = "images/2.png";
                     break;
 
                 case "Drizzle":
-                    immagine = "images/3.jpg";
+                    immagine = "images/3.png";
                     break;
 
                 case "Rain":
-                    immagine = "images/3.jpg";
+                    immagine = "images/3.png";
                     break;
 
                 case "Thunderstorm":
-                    immagine = "images/5.jpg";
+                    immagine = "images/5.png";
                     break;
 
                 case "Snow":
-                    immagine = "images/6.jpg";
+                    immagine = "images/6.png";
                     break;
 
                 case "Mist":
-                    immagine = "images/7.jpg";
+                    immagine = "images/7.png";
                     break;
 
                 case "Extreme":
-                    immagine = "images/8.jpg";
+                    immagine = "images/8.png";
                     break;
 
                 default:
-                    immagine = "images/1.jpg";
+                    immagine = "images/1.png";
                     break;
             }
         }
 
 
 
-        private async void LoadWeather()
+        public async void LoadWeather()
         {
             try
             {
@@ -179,28 +184,34 @@ namespace Meteo_scommesse
                 var json = await client.GetStringAsync(url);
                 var forecast = JsonSerializer.Deserialize<ForecastResponse>(json);
 
-                var primo = forecast.list[0];
+                var previsioneDelGiorno = forecast.list.FirstOrDefault(f => DateTime.Parse(f.dt_txt).Date == giornoCorrente.Date && DateTime.Parse(f.dt_txt).Hour == 12);
+                if (previsioneDelGiorno == null)
+                {
+                    previsioneDelGiorno = forecast.list.FirstOrDefault(f => DateTime.Parse(f.dt_txt).Date == giornoCorrente.Date);
+                }
+                if (previsioneDelGiorno == null)
+                    return;
+
                 lat = forecast.city.coord.lat;
                 lon = forecast.city.coord.lon;
                 nome = forecast.city.name;
-                temperatura = primo.main.temp;
-                umidita = primo.main.humidity;
-                velocitaVento = primo.wind.speed;
-                meteo = primo.weather[0].main;
-                tempMax = primo.main.temp_max;
-                tempMin = primo.main.temp_min;
-                tempPercepita = primo.main.feels_like;
+                temperatura = previsioneDelGiorno.main.temp;
+                umidita = previsioneDelGiorno.main.humidity;
+                velocitaVento = previsioneDelGiorno.wind.speed;
+                meteo = previsioneDelGiorno.weather[0].main;
+                tempMax = previsioneDelGiorno.main.temp_max;
+                tempMin = previsioneDelGiorno.main.temp_min;
+                tempPercepita = previsioneDelGiorno.main.feels_like;
 
-                if (meteo== "Drizzle" || meteo == "Rain" || meteo == "Thunderstorm" )
-                {
-                    precipitazioni = primo.rain.OneHour;
-                }
-                else if (meteo == "Snow")
-                {
-                    precipitazioni = primo.snow.OneHour;
-                }
-                
-                tempPercepita = primo.main.feels_like;
+
+                precipitazioni = 0;
+                if (previsioneDelGiorno.rain != null)
+                    precipitazioni = previsioneDelGiorno.rain.OneHour;
+
+                if (previsioneDelGiorno.snow != null)
+                    precipitazioni = previsioneDelGiorno.snow.OneHour;
+
+                tempPercepita = previsioneDelGiorno.main.feels_like;
 
                 impostaImmagine();
                 MeteoAggiornato?.Invoke();

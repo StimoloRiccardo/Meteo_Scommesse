@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -20,25 +21,46 @@ namespace Meteo_scommesse
     /// </summary>
     public partial class FinestraCitta : Window
     {  
+        Citta citta;
         public FinestraCitta(Citta citta)
         {
             InitializeComponent();
-            Citta cittaSelezionata = citta;
+            this.citta = citta;
+
+            citta.MeteoAggiornato += aggiorna;
+            aggiorna();
+        }
+
+        public void aggiorna()
+        {
             label_nomeCitta.Content = citta.getNome();
             label_temperatura.Content = citta.getTemperatura();
-            label_umidita.Content += citta.getUmidita();
-            label_vento.Content += citta.getVelocitaVento();
-            label_tempMax.Content += citta.getTempMax();
-            label_tempMin.Content += citta.getTempMin();
-            label_precipitazioni.Content += citta.getPrecipitazioni();
-            label_latitudine.Content += citta.getLatitudine().ToString();
-            label_longitudine.Content += citta.getLongitudine().ToString();
-            label_tempPercepita.Content += citta.getTempPercepita();
+            label_umidita.Content = "Umidità: " + citta.getUmidita();
+            label_vento.Content = "Velocità del Vento: " + citta.getVelocitaVento();
+            label_tempMax.Content = "Temp Massima: " + citta.getTempMax();
+            label_tempMin.Content = "Tempp Minima: " + citta.getTempMin();
+            label_precipitazioni.Content = "Precipitazioni: " + citta.getPrecipitazioni();
+            label_latitudine.Content = "Latitudine: " + citta.getLatitudine().ToString();
+            label_longitudine.Content = "Longitudine: " + citta.getLongitudine().ToString();
+            label_tempPercepita.Content = "Temp Percepita: " + citta.getTempPercepita();
             label_data.Content = citta.getGiornoCorrente().ToShortDateString();
 
             String pathDellEseguibile = AppDomain.CurrentDomain.BaseDirectory;
             String path = System.IO.Path.Combine(pathDellEseguibile, citta.getImmagine());
             immagine_meteo.Source = new BitmapImage(new Uri(path, UriKind.Absolute));
+        }
+
+        private void button_avanti_Click(object sender, RoutedEventArgs e)
+        {
+            citta.setGiornoCorrente(citta.getGiornoCorrente().AddDays(1));
+            citta.LoadWeather();
+        }
+
+
+        private void button_indietro_Click(object sender, RoutedEventArgs e)
+        {
+            citta.setGiornoCorrente(citta.getGiornoCorrente().AddDays(-1));
+            citta.LoadWeather();
         }
     }
 }

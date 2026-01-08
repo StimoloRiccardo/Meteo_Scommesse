@@ -46,8 +46,14 @@ namespace Meteo_scommesse
 
         private void listBox_citta_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if(listBox_citta.SelectedItem == null)
+            {
+                return;
+            }
             FinestraCitta citta = new FinestraCitta((Citta)listBox_citta.SelectedItem);
             citta.ShowDialog();
+
+            listBox_citta.SelectedItem = null;
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e) // aggiorna
