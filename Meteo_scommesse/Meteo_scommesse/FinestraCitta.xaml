@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Meteo_scommesse"
         mc:Ignorable="d"
-        Title="FinestraCitta" Height="767" Width="320">
+        Title="FinestraCitta" Height="767" Width="375">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="179*"/>
-            <ColumnDefinition Width="141*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -17,21 +17,31 @@
                 <GradientStop Color="White" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <Label x:Name="label_nomeCitta" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="39" Margin="50,25,0,0" VerticalAlignment="Top" Width="220" FontSize="16" FontWeight="Bold" Content="prova" Grid.ColumnSpan="2"/>
-        <Label x:Name="label_temperatura" Content="3" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="40" Margin="128,214,0,0" VerticalAlignment="Top" Width="64" FontWeight="Bold" FontSize="16" Grid.ColumnSpan="2"/>
-        <Image x:Name="immagine_meteo" HorizontalAlignment="Left" Height="71" Margin="128,102,0,0" VerticalAlignment="Top" Width="71" Grid.ColumnSpan="2"/>
         <Label x:Name="label_umidita" Content="umidità:" HorizontalAlignment="Left" Height="33" Margin="19,343,0,0" VerticalAlignment="Top" Width="122" FontSize="14" FontWeight="Bold"/>
         <Label x:Name="label_vento" Content="vento:" HorizontalAlignment="Left" Height="33" Margin="19,376,0,0" VerticalAlignment="Top" Width="122" FontSize="14" FontWeight="Bold"/>
         <Label x:Name="label_Parametri" Content="Parametri:" HorizontalAlignment="Left" Height="31" Margin="19,273,0,0" VerticalAlignment="Top" Width="98" FontWeight="Bold" FontSize="16"/>
         <Label x:Name="label_tempMax" Content="temp max: " HorizontalAlignment="Left" Height="33" Margin="19,409,0,0" VerticalAlignment="Top" Width="122" FontSize="14" FontWeight="Bold"/>
         <Label x:Name="label_tempMin" Content="temp min:" HorizontalAlignment="Left" Height="33" Margin="19,442,0,0" VerticalAlignment="Top" Width="122" FontSize="14" FontWeight="Bold"/>
-        <Label x:Name="label_precipitazioni" Content="precipitazioni: " HorizontalAlignment="Left" Height="33" Margin="19,475,0,0" VerticalAlignment="Top" Width="155" FontSize="14" FontWeight="Bold"/>
+        <Label x:Name="label_precipitazioni" Content="precipitazioni: " HorizontalAlignment="Center" Height="33" Margin="0,475,0,0" VerticalAlignment="Top" Width="156" FontSize="14" FontWeight="Bold"/>
         <Label x:Name="label_latitudine" Content="latitudine:" HorizontalAlignment="Left" Height="33" Margin="0,310,0,0" VerticalAlignment="Top" Width="114" FontSize="14" FontWeight="Bold" Grid.Column="1"/>
         <Label x:Name="label_longitudine" Content="lonitudine:" HorizontalAlignment="Left" Height="33" Margin="0,343,0,0" VerticalAlignment="Top" Width="131" FontSize="14" FontWeight="Bold" Grid.Column="1"/>
-        <Label x:Name="label_tempPercepita" Content="temp percepita:" HorizontalAlignment="Left" Height="33" Margin="19,310,0,0" VerticalAlignment="Top" Width="155" FontSize="14" FontWeight="Bold"/>
-        <Label x:Name="label_data" Content="data" Grid.ColumnSpan="2" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="38" Margin="87,64,0,0" VerticalAlignment="Top" Width="146" FontSize="16" FontWeight="Bold"/>
-        <Button x:Name="button_avanti" Grid.Column="1" Content="&gt;" HorizontalAlignment="Left" Height="38" Margin="57,64,0,0" VerticalAlignment="Top" Width="38" Background="{x:Null}" BorderBrush="{x:Null}" Click="button_avanti_Click"/>
-        <Button x:Name="button_indietro" Content="&lt;" HorizontalAlignment="Left" Height="38" Margin="43,64,0,0" VerticalAlignment="Top" Width="37" Background="{x:Null}" BorderBrush="{x:Null}" Click="button_indietro_Click"/>
+        <Label x:Name="label_tempPercepita" Content="temp percepita:" HorizontalAlignment="Center" Height="33" Margin="0,310,0,0" VerticalAlignment="Top" Width="156" FontSize="14" FontWeight="Bold"/>
+        <Border x:Name="border" Grid.ColumnSpan="2" Margin="19,20,0,0" Width="328" Height="203" CornerRadius="40" BorderBrush="Black" BorderThickness="4,4,4,4" Background="#FFB9FFEF" ClipToBounds="True" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Border.OpacityMask>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="Black" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.OpacityMask>
+            <Grid x:Name="grid2">
+                <Button x:Name="button_avanti" Content="&gt;" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="30" Margin="238,149,0,0" VerticalAlignment="Top" Width="30" Background="{x:Null}" BorderBrush="Black" Click="button_avanti_Click" FontWeight="Bold" FontSize="20" FontFamily="Arial Black"/>
+                <Label x:Name="label_data" Content="gg/mm/yy" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Center" Height="38" Margin="0,145,0,0" VerticalAlignment="Top" Width="146" FontSize="16" FontWeight="Bold" BorderBrush="Black" BorderThickness="2,2,2,2" FontFamily="Arial Black"/>
+                <Button x:Name="button_indietro" Content="&lt;" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="30" Margin="52,149,0,0" VerticalAlignment="Top" Width="30" Background="{x:Null}" BorderBrush="Black" Click="button_indietro_Click" FontSize="20" FontWeight="Bold" FontFamily="Arial Black"/>
+                <Image x:Name="immagine_meteo" HorizontalAlignment="Left" Height="100" Margin="201,21,0,0" VerticalAlignment="Top" Width="100"/>
+                <Label x:Name="label_temperatura" Content="10.8°C" VerticalContentAlignment="Center"  HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="39" Margin="68,75,0,0" VerticalAlignment="Top" Width="94" FontWeight="Bold" FontSize="16" RenderTransformOrigin="0.512,0.516" FontFamily="Segoe UI Black"/>
+                <Label x:Name="label_nomeCitta" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="39" Margin="24,31,0,0" VerticalAlignment="Top" Width="182" FontSize="20" FontWeight="Bold" Content="Prova" FontFamily="Arial Black"/>
+            </Grid>
+        </Border>
 
     </Grid>
 </Window>

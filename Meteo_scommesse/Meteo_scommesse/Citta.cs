@@ -66,7 +66,7 @@ namespace Meteo_scommesse
         
         public string getTemperatura()
         {
-            return temperatura + "°";
+            return temperatura + "°C";
         }
 
         public string getUmidita()
@@ -86,12 +86,12 @@ namespace Meteo_scommesse
 
         public string getTempMax()
         {
-            return tempMax + "°";
+            return tempMax + "°C";
         }
 
         public string getTempMin()
         {
-            return tempMin + "°";
+            return tempMin + "°C";
         }
 
         public string getPrecipitazioni()
@@ -111,7 +111,7 @@ namespace Meteo_scommesse
         
         public string getTempPercepita()
         {
-            return tempPercepita + "°";
+            return tempPercepita + "°C";
         }
 
         public DateTime getGiornoCorrente()
@@ -126,7 +126,7 @@ namespace Meteo_scommesse
 
         public override string ToString()
         {
-            return " " + nome + "    " + meteo + "    " + temperatura + "°";
+            return " " + nome + "       " + meteo + "       " + temperatura + "°C";
         }
 
         public void impostaImmagine()
@@ -177,9 +177,9 @@ namespace Meteo_scommesse
         {
             try
             {
-                string ApiKey = "7f76e18c6271aff9c2dce1751d2c2b12";
+                string ApiKey = "a918cdbddb30238b95abe66a89456147";
                 HttpClient client = new HttpClient();
-                string url = $"https://api.openweathermap.org/data/2.5/forecast?q={nome}&units=metric&appid={ApiKey}\r\n";
+                string url = $"https://api.openweathermap.org/data/2.5/forecast?q={nome}&units=metric&appid={ApiKey}";
 
                 var json = await client.GetStringAsync(url);
                 var forecast = JsonSerializer.Deserialize<ForecastResponse>(json);

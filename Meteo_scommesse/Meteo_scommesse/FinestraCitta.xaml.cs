@@ -28,11 +28,14 @@ namespace Meteo_scommesse
             this.citta = citta;
 
             citta.MeteoAggiornato += aggiorna;
-            aggiorna();
+            citta.LoadWeather();
         }
+
 
         public void aggiorna()
         {
+            if (citta.getImmagine() == null)
+                return;
             label_nomeCitta.Content = citta.getNome();
             label_temperatura.Content = citta.getTemperatura();
             label_umidita.Content = "Umidità: " + citta.getUmidita();
