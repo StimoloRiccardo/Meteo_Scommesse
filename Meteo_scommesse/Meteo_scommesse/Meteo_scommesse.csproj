@@ -85,12 +85,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="FinestraScommesse.xaml.cs">
+      <DependentUpon>FinestraScommesse.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Scommessa.cs" />
     <Compile Include="WeatherModels.cs" />
     <Page Include="AggiungiCitta.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="FinestraCitta.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FinestraScommesse.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

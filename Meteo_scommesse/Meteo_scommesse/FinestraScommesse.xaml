@@ -1,0 +1,48 @@
+﻿<Window x:Class="Meteo_scommesse.FinestraScommesse"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Meteo_scommesse"
+        mc:Ignorable="d"
+        Title="FinestraScommesse" Height="450" Width="800">
+    <Grid Background="#FF56ECF1">
+        <Label Content="Sistema Scommesse" HorizontalAlignment="Left" Height="78" Margin="32,22,0,0" VerticalAlignment="Top" Width="437" FontSize="45" FontWeight="Bold"/>
+        <Button x:Name="button_conferma" Content="Conferma" HorizontalAlignment="Left" Height="48" Margin="560,360,0,0" VerticalAlignment="Top" Width="150" Click="button_conferma_Click"/>
+        <DatePicker x:Name="datePicker_data" HorizontalAlignment="Left" Height="43" Margin="501,174,0,0" VerticalAlignment="Top" Width="272" FontSize="20" RenderTransformOrigin="0.5,0.5"/>
+        <Label x:Name="label_soldi" Content="20€" HorizontalAlignment="Left" Margin="708,22,0,0" VerticalAlignment="Top" Width="64" Height="47" FontSize="30"/>
+        <TextBox x:Name="textBox_Citta" HorizontalAlignment="Left" Height="32" Margin="192,120,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="190" FontSize="20"/>
+        <Label x:Name="label_Citta" Content="Citta:" HorizontalAlignment="Left" Height="32" Margin="116,120,0,0" VerticalAlignment="Top" Width="118" FontSize="20" FontWeight="Bold"/>
+        <TabControl x:Name="tabControl_tipoValori" HorizontalAlignment="Left" Height="234" Margin="32,174,0,0" VerticalAlignment="Top" Width="438" FontSize="18" FontWeight="Bold" Foreground="White" SelectionChanged="tabControl_tipoValori_SelectionChanged">
+            <TabItem Header="Meteo">
+                <Grid Background="#FFE5E5E5">
+                    <ComboBox x:Name="comboBox_vMeteo" HorizontalAlignment="Center" VerticalAlignment="Top" Width="240" Height="32" Margin="0,33,0,0"/>
+                    <Image x:Name="img_vMeteo" HorizontalAlignment="Left" Height="100" Margin="216,87,0,0" VerticalAlignment="Top" Width="100"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Temperatura">
+                <Grid Background="#FFE5E5E5">
+                    <Label Content="Temp Min (°C)" HorizontalAlignment="Left" Height="37" Margin="113,109,0,0" VerticalAlignment="Top" Width="142"/>
+                    <TextBox x:Name="textBox_vTempMin" HorizontalAlignment="Left" Height="37" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="74" Margin="245,109,0,0" FontSize="20" RenderTransformOrigin="0.512,0.609"/>
+                    <Label Content="Temp Max (°C)" HorizontalAlignment="Left" Height="37" Margin="101,151,0,0" VerticalAlignment="Top" Width="145"/>
+                    <TextBox x:Name="textBox_vTempMax" HorizontalAlignment="Left" Height="35" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="90" Margin="262,153,0,0" FontSize="20" RenderTransformOrigin="0.512,0.609"/>
+                    <TextBox x:Name="textBox_vTempPercepita" HorizontalAlignment="Left" Height="37" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="90" Margin="262,58,0,0" FontSize="20" RenderTransformOrigin="0.512,0.609"/>
+                    <Label Content="Temp Percepita (°C)" HorizontalAlignment="Left" Height="37" Margin="75,58,0,0" VerticalAlignment="Top" Width="182"/>
+                    <TextBox x:Name="textBox_vTemp" HorizontalAlignment="Left" Height="37" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="107" Margin="245,12,0,0" FontSize="20" RenderTransformOrigin="0.512,0.609"/>
+                    <Label Content="Temperatura (°C)" HorizontalAlignment="Left" Height="37" Margin="81,12,0,0" VerticalAlignment="Top" Width="159"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Altro">
+                <Grid Background="#FFE5E5E5">
+                    <TextBox x:Name="textBox_vUmidita" HorizontalAlignment="Left" Height="37" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="107" Margin="280,23,0,0" FontSize="20" RenderTransformOrigin="0.512,0.609"/>
+                    <TextBox x:Name="textBox_vPrecipitazioni" HorizontalAlignment="Left" Height="37" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="107" Margin="280,135,0,0" FontSize="20" RenderTransformOrigin="0.512,0.609"/>
+                    <TextBox x:Name="textBox_vVelVento" HorizontalAlignment="Left" Height="37" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" Width="107" Margin="280,0,0,0" FontSize="20" RenderTransformOrigin="0.512,0.609"/>
+                    <Label Content="Umidità (%)" HorizontalAlignment="Left" Height="37" Margin="57,23,0,0" VerticalAlignment="Top" Width="159"/>
+                    <Label Content="Velocità Vento (km/h)" HorizontalAlignment="Left" Height="37" Margin="57,0,0,0" VerticalAlignment="Center" Width="202"/>
+                    <Label Content="Precipitazioni (mm)" HorizontalAlignment="Left" Height="37" Margin="57,135,0,0" VerticalAlignment="Top" Width="183"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>

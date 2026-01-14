@@ -36,13 +36,39 @@ namespace Meteo_scommesse
 
             if (finestraCitta.ShowDialog() == true)
             {
+                string nome = finestraCitta.getNomeCitta();
+                if (!cittaEsiste(nome))
+                {
+                    MessageBox.Show("La città inserita non esiste!");
+                    return;
+                }
+
                 Citta nuovaCitta = new Citta(finestraCitta.getNomeCitta());
                 listBox_citta.Items.Add(nuovaCitta);
             }
             
         }
 
+        private bool cittaEsiste(string nomeCitta)
+        {
+            try
+            {
+                string ApiKey = "a918cdbddb30238b95abe66a89456147";
+                using (HttpClient client = new HttpClient())
+                {
+                    //uso geo al posto di forcast o weather perche piu veloce
+                    string url = $"http://api.openweathermap.org/geo/1.0/direct?q={nomeCitta}&limit=1&appid={ApiKey}";
+                    string json = client.GetStringAsync(url).Result;
 
+                    // Se la risposta è "[]", la città non esiste
+                    return json.Length > 5;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
 
         private void listBox_citta_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

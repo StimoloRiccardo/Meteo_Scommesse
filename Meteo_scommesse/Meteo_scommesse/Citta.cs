@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -10,6 +11,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Timers;
 using System.Windows;
+using System.Windows.Markup.Localizer;
 using System.Windows.Threading;
 using static Meteo_scommesse.WeatherModels;
 
@@ -17,10 +19,10 @@ namespace Meteo_scommesse
 {   
     public class Citta
     {
-        private string nome, immagine;
-        private double temperatura, velocitaVento, umidita, tempMax, tempMin, precipitazioni, lon, lat, tempPercepita;
-        private string meteo;
-        private DateTime giornoCorrente;
+        string nome, immagine;
+        double temperatura, velocitaVento, umidita, tempMax, tempMin, precipitazioni, lon, lat, tempPercepita;
+        string meteo;
+        DateTime giornoCorrente;
 
         private readonly DispatcherTimer _timer;
         public event Action MeteoAggiornato;
@@ -203,15 +205,12 @@ namespace Meteo_scommesse
                 tempMin = previsioneDelGiorno.main.temp_min;
                 tempPercepita = previsioneDelGiorno.main.feels_like;
 
-
                 precipitazioni = 0;
                 if (previsioneDelGiorno.rain != null)
                     precipitazioni = previsioneDelGiorno.rain.OneHour;
 
                 if (previsioneDelGiorno.snow != null)
                     precipitazioni = previsioneDelGiorno.snow.OneHour;
-
-                tempPercepita = previsioneDelGiorno.main.feels_like;
 
                 impostaImmagine();
                 MeteoAggiornato?.Invoke();
@@ -221,6 +220,69 @@ namespace Meteo_scommesse
                 MessageBox.Show("Errore nel recupero dati meteo\n" + ex.Message);
             }
         }
+
+        public bool ControllaScommessa(Scommessa s)
+        {
+            if (!string.Equals(this.getNome(), s.PCitta, StringComparison.OrdinalIgnoreCase))
+                return false;
+
+            if (this.getGiornoCorrente().Date != s.Giorno.Date)
+                return false;
+
+            
+
+
+            double temperatura = this.temperatura;
+            double umidita = this.umidita;
+            double vento = this.velocitaVento;
+            double tempMax = this.tempMax;
+            double tempMin = this.tempMin;
+            double precipitazioni = this.precipitazioni;
+            double percepita = this.tempPercepita;
+
+            string statoReale = this.meteo;
+            double codiceMeteo;
+            switch (statoReale)
+            {
+                case "Clear": codiceMeteo = 1; break;
+                case "Clouds": codiceMeteo = 2; break;
+                case "Rain": codiceMeteo = 3; break;
+                case "Thunderstorm": codiceMeteo = 5; break;
+                case "Snow": codiceMeteo = 6; break;
+                case "Mist": codiceMeteo = 7; break;
+                case "Fog": codiceMeteo = 7; break;
+                case "Extreme": codiceMeteo = 8; break;
+
+                default: codiceMeteo = -1; break;
+            }
+
+            bool esito = false;
+            switch (s.Tipo)
+            {
+                case "Temperatura":
+                    esito = Math.Abs(this.temperatura - s.Valori[0]) < 0.01 &&
+                        Math.Abs(this.tempPercepita - s.Valori[1]) < 0.01 &&
+                        Math.Abs(this.tempMin - s.Valori[2]) < 0.01 &&
+                        Math.Abs(this.tempMax- s.Valori[3]) < 0.01;
+                    break;
+
+                case "Meteo":
+                    esito = (codiceMeteo == s.Valori[0]); 
+                    break;
+
+                case "Altro":
+                    esito = Math.Abs(umidita - s.Valori[0]) < 0.01 &&
+                        Math.Abs(this.velocitaVento - s.Valori[1]) < 0.01 &&
+                        Math.Abs(this.precipitazioni - s.Valori[2]) < 0.01;
+                    break;
+
+                default:
+                    throw new Exception("Tipo di scommessa non riconosciuto");
+            }
+            s.Esito = esito;
+            return esito;
+        }
+
 
     }
 }
