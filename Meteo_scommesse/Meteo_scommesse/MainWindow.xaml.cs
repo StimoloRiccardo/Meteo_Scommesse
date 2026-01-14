@@ -16,6 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using static Meteo_scommesse.WeatherModels;
+using System.IO;
 
 namespace Meteo_scommesse
 {
@@ -28,7 +29,7 @@ namespace Meteo_scommesse
         {
             InitializeComponent();
             label_meteo.FontFamily = new FontFamily("Century Schoolbook");
-
+            CaricaCitta();
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -42,11 +43,53 @@ namespace Meteo_scommesse
                     MessageBox.Show("La città inserita non esiste!");
                     return;
                 }
-
+                SalvaCitta(nome);
                 Citta nuovaCitta = new Citta(finestraCitta.getNomeCitta());
                 listBox_citta.Items.Add(nuovaCitta);
             }
             
+        }
+
+        private void SalvaCitta(string citta)
+        {
+            string path = "citta.csv";
+
+            if (!File.Exists(path))
+            {
+                using (StreamWriter sw = File.CreateText(path))
+                {
+                    sw.WriteLine("NomeCitta");
+                }
+            }
+            else if (File.Exists(path))
+            {
+                File.AppendAllText(path, citta + Environment.NewLine);
+            }
+        }
+
+        private void CaricaCitta()
+        {
+            string path = "citta.csv";
+
+            if (File.Exists(path))
+            {
+                using (StreamReader sr = new StreamReader(path))
+                {
+                    // Salta la prima riga (intestazione)
+                    sr.ReadLine();
+
+                    while (!sr.EndOfStream)
+                    {
+                        string riga = sr.ReadLine();
+
+                        if (!string.IsNullOrWhiteSpace(riga))
+                        {
+                            Citta nuovaCitta = new Citta(riga);
+                            listBox_citta.Items.Add(nuovaCitta);
+                        }
+                    }
+                }
+            }
         }
 
         private bool cittaEsiste(string nomeCitta)
