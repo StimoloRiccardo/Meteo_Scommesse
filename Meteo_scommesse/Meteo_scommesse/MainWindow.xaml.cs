@@ -113,9 +113,9 @@ namespace Meteo_scommesse
             }
         }
 
-        private void listBox_citta_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void listBox_citta_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            if(listBox_citta.SelectedItem == null)
+            if (listBox_citta.SelectedItem == null)
             {
                 return;
             }
@@ -125,10 +125,29 @@ namespace Meteo_scommesse
             listBox_citta.SelectedItem = null;
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e) // aggiorna
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            // forza aggiornamento grafico
             listBox_citta.Items.Refresh();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            if (listBox_citta.SelectedItem == null)
+            {
+                MessageBox.Show("Seleziona una città prima di scommettere.");
+                return;
+            }
+
+            Citta selezionata = (Citta)listBox_citta.SelectedItem;
+
+            FinestraScommesse finestra = new FinestraScommesse(selezionata);
+            finestra.ShowDialog();
+        }
+
+        private void listBox_citta_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

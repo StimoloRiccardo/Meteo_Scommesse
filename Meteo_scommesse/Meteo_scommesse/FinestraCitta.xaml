@@ -9,7 +9,7 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -17,16 +17,16 @@
                 <GradientStop Color="White" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <Label x:Name="label_umidita" Content="umidità:" HorizontalAlignment="Left" Height="33" Margin="19,343,0,0" VerticalAlignment="Top" Width="122" FontSize="14" FontWeight="Bold"/>
-        <Label x:Name="label_vento" Content="vento:" HorizontalAlignment="Left" Height="33" Margin="19,376,0,0" VerticalAlignment="Top" Width="122" FontSize="14" FontWeight="Bold"/>
-        <Label x:Name="label_Parametri" Content="Parametri:" HorizontalAlignment="Left" Height="31" Margin="19,273,0,0" VerticalAlignment="Top" Width="98" FontWeight="Bold" FontSize="16"/>
-        <Label x:Name="label_tempMax" Content="temp max: " HorizontalAlignment="Left" Height="33" Margin="19,409,0,0" VerticalAlignment="Top" Width="122" FontSize="14" FontWeight="Bold"/>
-        <Label x:Name="label_tempMin" Content="temp min:" HorizontalAlignment="Left" Height="33" Margin="19,442,0,0" VerticalAlignment="Top" Width="122" FontSize="14" FontWeight="Bold"/>
-        <Label x:Name="label_precipitazioni" Content="precipitazioni: " HorizontalAlignment="Center" Height="33" Margin="0,475,0,0" VerticalAlignment="Top" Width="156" FontSize="14" FontWeight="Bold"/>
-        <Label x:Name="label_latitudine" Content="latitudine:" HorizontalAlignment="Left" Height="33" Margin="0,310,0,0" VerticalAlignment="Top" Width="114" FontSize="14" FontWeight="Bold" Grid.Column="1"/>
-        <Label x:Name="label_longitudine" Content="lonitudine:" HorizontalAlignment="Left" Height="33" Margin="0,343,0,0" VerticalAlignment="Top" Width="131" FontSize="14" FontWeight="Bold" Grid.Column="1"/>
-        <Label x:Name="label_tempPercepita" Content="temp percepita:" HorizontalAlignment="Center" Height="33" Margin="0,310,0,0" VerticalAlignment="Top" Width="156" FontSize="14" FontWeight="Bold"/>
-        <Border x:Name="border" Grid.ColumnSpan="2" Margin="19,20,0,0" Width="328" Height="203" CornerRadius="40" BorderBrush="Black" BorderThickness="4,4,4,4" Background="#FFB9FFEF" ClipToBounds="True" HorizontalAlignment="Left" VerticalAlignment="Top">
+        <Label x:Name="label_umidita" Content="umidità:" HorizontalAlignment="Left" Height="33" Margin="19,321,0,0" VerticalAlignment="Top" Width="320" FontSize="14" FontWeight="Bold"/>
+        <Label x:Name="label_vento" Content="vento:" HorizontalAlignment="Left" Height="33" Margin="19,353,0,0" VerticalAlignment="Top" Width="320" FontSize="14" FontWeight="Bold"/>
+        <Label x:Name="label_Parametri" Content="Parametri:" HorizontalAlignment="Left" Height="31" Margin="19,251,0,0" VerticalAlignment="Top" Width="98" FontWeight="Bold" FontSize="16"/>
+        <Label x:Name="label_tempMax" Content="temp max: " HorizontalAlignment="Left" Height="33" Margin="19,387,0,0" VerticalAlignment="Top" Width="326" FontSize="14" FontWeight="Bold"/>
+        <Label x:Name="label_tempMin" Content="temp min:" HorizontalAlignment="Left" Height="33" Margin="19,420,0,0" VerticalAlignment="Top" Width="320" FontSize="14" FontWeight="Bold"/>
+        <Label x:Name="label_precipitazioni" Content="precipitazioni: " HorizontalAlignment="Left" Height="33" Margin="19,453,0,0" VerticalAlignment="Top" Width="313" FontSize="14" FontWeight="Bold"/>
+        <Label x:Name="label_latitudine" Content="latitudine:" HorizontalAlignment="Left" Height="33" Margin="19,486,0,0" VerticalAlignment="Top" Width="313" FontSize="14" FontWeight="Bold"/>
+        <Label x:Name="label_longitudine" Content="lonitudine:" HorizontalAlignment="Left" Height="33" Margin="19,519,0,0" VerticalAlignment="Top" Width="326" FontSize="14" FontWeight="Bold"/>
+        <Label x:Name="label_tempPercepita" Content="temp percepita:" HorizontalAlignment="Left" Height="33" Margin="19,288,0,0" VerticalAlignment="Top" Width="313" FontSize="14" FontWeight="Bold"/>
+        <Border x:Name="border" Margin="0,20,0,0" Width="328" Height="203" CornerRadius="40" BorderBrush="Black" BorderThickness="4,4,4,4" Background="#FFB9FFEF" ClipToBounds="True" HorizontalAlignment="Center" VerticalAlignment="Top">
             <Border.OpacityMask>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="Black"/>

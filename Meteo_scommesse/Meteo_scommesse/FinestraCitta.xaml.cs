@@ -20,7 +20,7 @@ namespace Meteo_scommesse
     /// Logica di interazione per FinestraCitta.xaml
     /// </summary>
     public partial class FinestraCitta : Window
-    {  
+    {
         Citta citta;
         public FinestraCitta(Citta citta)
         {

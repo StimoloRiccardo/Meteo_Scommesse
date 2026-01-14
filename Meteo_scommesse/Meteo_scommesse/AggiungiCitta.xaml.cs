@@ -37,11 +37,6 @@ namespace Meteo_scommesse
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if(txtBox_nomeCitta.Text == "scommessa")
-            {
-                FinestraScommesse finestraScommesse = new FinestraScommesse();
-                finestraScommesse.ShowDialog();
-            }
             nomeCitta = txtBox_nomeCitta.Text;
             DialogResult = true;
         }
